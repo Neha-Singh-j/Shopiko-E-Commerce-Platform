@@ -1,7 +1,7 @@
 # 🛍️ Shopiko - Full Stack E-Commerce Web App
 
 **Shopiko** is a modern, full-featured **e-commerce web application** built to deliver a seamless online shopping experience. From product browsing to secure checkout, it replicates all essential functionalities of a real-world e-commerce platform — including user authentication, cart management, reviews, order placement, and a **payment gateway integration**.
-
+(Under Processing)
 ---
 
 ## 🚀 Features
