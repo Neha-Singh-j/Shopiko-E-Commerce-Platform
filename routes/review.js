@@ -1,40 +1,32 @@
-const express = require('express');
+const express =  require('express');
+const Product = require('../models/product');
+const Review = require('../models/review');
+const {validateReview , isLoggedIn} = require('../middleware')
+
 const router = express.Router();
-const Product = require('../models/Product');
-const Review = require('../models/Review');
-const { validateReview } = require('../middleware');
 
-
-router.post('/products/:productid/review',validateReview,async(req, res) => {
-
-
-    try {
-        const { productid } = req.params;
-        const { rating, comment } = req.body;
-
-        const product = await Product.findById(productid);
-
-        const review = new Review({ rating, comment });
-
-        // Average Rating Logic
-        const newAverageRating = ((product.avgRating * product.reviews.length) + parseInt(rating)) / (product.reviews.length + 1);
-        product.avgRating = parseFloat(newAverageRating.toFixed(1));
-
-        product.reviews.push(review);
-
-        await review.save();
-        await product.save();
-
-        req.flash('success', 'Added your review successfully!');
-        res.redirect(`/products/${productid}`);
-    }
-
-    catch (e) {
-        res.status(500).render('error', { err: e.message });
-    }
+router.post('/products/:productId/review' , isLoggedIn , validateReview, async(req,res)=>{
+        try{
+                let {productId} = req.params;
+                let {rating , comment} = req.body;
+                const product = await Product.findById(productId);
+                // console.log(product);
+                // creating a new review
+                const review  = new Review({rating , comment}); // let review  = new Review({...req.body}) 
+                
+                // adding review id to product array
+                product.reviews.push(review); //mongodb internally isme se id nikaal kr usse push krdega.
+                
+                await review.save();
+                await product.save();
+                req.flash('success' , 'Review added successfully');
+                res.redirect(`/products/${productId}`)
+        }
+        catch(e){
+                res.status(500).render('error' ,{err:e.message})
+        }      
     
-});
-
+})
 
 
 module.exports = router;

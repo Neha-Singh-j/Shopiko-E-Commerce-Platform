@@ -1,11 +1,9 @@
-<% layout('layouts/boilerplate') %>
+<%-include('./partials/header')%>
+<%-include('./partials/navbar')%>
+<%-include('./partials/flash')%>
 
-<%- include('./partials/navbar') %>    
+<div class="alert alert-danger" role="alert" style="margin-top: 120px;">
+    <%=err%>
+</div>
 
-    <div class="alert alert-danger" role="alert">
-        <h1>error page</h1>  
-        <%=err%> 
-    </div>
-
-</body>
-</html>
+<%-include('./partials/footer')%>

@@ -1,40 +1,48 @@
 const mongoose = require('mongoose');
+const Review = require('./review');
+
 const productSchema = new mongoose.Schema({
-    name: {
+    name:{
         type:String,
         trim:true,
         required:true
-    } , 
+    },
     img:{
         type:String,
         trim:true
-    } ,
-    price: {
+    },
+    price:{
         type:Number,
         min:0,
         required:true
-    } ,
-    desc: {
+    },
+    istock:{
+        type:Boolean,
+        default:true,
+    },
+    desc:{
         type:String,
         trim:true
     },
     reviews:[
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Review'
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Review'
         }
-    ]
-})
-
-
-
-// middleware jo BTS mongodb operations karwane par use hota hai and iske andar pre nd post middleware hote hai which are basically used over the schema and before the model is js class.
-
-productSchema.post('findOneAndDelete' , async function(product){
-    if(product.reviews.length > 0){
-        await Review.deleteMany({_id:{$in:product.reviews}})
+    ],
+    author:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'User'
     }
-})
+});
+
+
+
+// productSchema.post('findOneAndDelete' , async function(product){
+//     if(product.reviews.length > 0){
+//         await Review.deleteMany({_id:{$in:product.reviews}})
+//     }
+// })
 
 
 let Product = mongoose.model('Product' , productSchema);
