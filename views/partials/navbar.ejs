@@ -1,38 +1,43 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #0077b6;">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background: linear-gradient(to right, #6a11cb 0%, #fc4a1a 100%); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <div class="container">
-    <a class="navbar-brand" href="/products"><i class="fas fa-shopping-basket" style="margin-right: 10px;font-size: 1.7rem;"></i>Shopping Cart</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand text-white fw-bold" href="/products" style="font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+      <i class="fas fa-bag-shopping me-2" style="font-size: 1.7rem; color: #ffd700;"></i>Shopiko
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">Home</a>
+          <a class="nav-link text-white px-3" aria-current="page" href="/" style="font-family: 'Arial', sans-serif;">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products">Products</a>
+          <a class="nav-link text-white px-3" href="/products" style="font-family: 'Arial', sans-serif;">Products</a>
         </li>
         <%if(currentUser && currentUser.role === 'seller'){%>
         <li class="nav-item">
-          <a class="nav-link" href="/products/new" tabindex="-1" aria-disabled="true">New</a>
+          <a class="nav-link text-white px-3" href="/products/new" style="font-family: 'Arial', sans-serif;">New Product</a>
         </li>
         <%}%>
       </ul>
-      <div class="navbar-nav ml-auto">
-
-        <%if(!currentUser){%>
-          <a href="/login" class="nav-link">Login</a> 
-        <%} else{%>
-          <a href="#" class="nav-link text-capitalize">Hello <%=currentUser.username%></i> 
-            <a href="/user/cart" class="nav-link"><i class="fas fa-shopping-cart"></i> 
-            <sup><span class="badge bg-danger"><%=currentUser.cart.length%></span></sup> 
-          </a>
-          <a href="/logout" class="nav-link">Logout</a>
-        <%}%>
-
-              
-      </div>
       
+      <div class="navbar-nav ms-auto">
+        <%if(!currentUser){%>
+          <a href="/login" class="nav-link text-white px-3 fw-semibold" style="font-family: 'Arial', sans-serif;">Login</a> 
+          <a href="/register" class="nav-link px-3 fw-semibold" style="color: #ffd700; font-family: 'Arial', sans-serif;">Register</a>
+        <%} else{%>
+          <span class="nav-link text-white px-3 text-capitalize" style="font-family: 'Arial', sans-serif;">👋 Hello <%=currentUser.username%></span>
+          <a href="/user/cart" class="nav-link text-white px-3 position-relative">
+            <i class="fas fa-cart-shopping fs-5" style="color: #ffd700;"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background-color: #ffd700; color: #2c0b5e; font-family: 'Arial', sans-serif;">
+              <%=currentUser.cart.length%>
+            </span>
+          </a>
+          <a href="/logout" class="nav-link px-3 fw-semibold" style="color: #ffd700; font-family: 'Arial', sans-serif;">Logout</a>
+        <%}%>
+      </div>
     </div>
-  </div>
+  </div> 
 </nav>

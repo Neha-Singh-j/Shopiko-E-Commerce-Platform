@@ -1,4 +1,91 @@
+<footer class="pt-5 pb-4" style="background: linear-gradient(to right, #4a148c, #880e4f);">
+  <style>
+    /* Updated Gradient Text Styles to match navbar */
+    .gradient-text {
+      background: linear-gradient(90deg, #ff8a00, #ff5252);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    
+    .gradient-text-light {
+      background: linear-gradient(90deg, #ff9e80, #ffcc80);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .gradient-link {
+      background: linear-gradient(90deg, #ff9e80, #ff8a80);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .gradient-link:hover {
+      background: linear-gradient(90deg, #ff8a80, #ff9e80);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-decoration: underline;
+    }
+  </style>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-</html>
+  <div class="container">
+    <div class="row">
+      <!-- Brand Info -->
+      <div class="col-lg-4 mb-4">
+        <h3 class="gradient-text mb-3 fw-bold">Shopiko</h3>
+        <p class="gradient-text-light">Your vibrant marketplace for unique finds</p>
+      </div>
+      
+      <!-- Company Links -->
+      <div class="col-md-4 col-lg-2 mb-4">
+        <h5 class="text-uppercase mb-3 gradient-text fw-bold">Company</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/about" class="gradient-link text-decoration-none">About Us</a></li>
+          <li class="mb-2"><a href="/feedback" class="gradient-link text-decoration-none">Feedback</a></li>
+          <li><a href="/events" class="gradient-link text-decoration-none">Events</a></li>
+        </ul>
+      </div>
+      
+      <!-- Support Links -->
+      <div class="col-md-4 col-lg-2 mb-4">
+        <h5 class="text-uppercase mb-3 gradient-text fw-bold">Support</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/account" class="gradient-link text-decoration-none">Account</a></li>
+          <li class="mb-2"><a href="/faq" class="gradient-link text-decoration-none">FAQ</a></li>
+          <li><a href="/contact" class="gradient-link text-decoration-none">Contact Us</a></li>
+        </ul>
+      </div>
+      
+      <!-- Contact Info -->
+      <div class="col-md-4 col-lg-4 mb-4">
+        <h5 class="text-uppercase mb-3 gradient-text fw-bold">Contact Info</h5>
+        <address class="gradient-text-light">
+          <i class="fas fa-map-marker-alt me-2"></i> 123 Market Street<br>
+          <i class="fas fa-phone me-2 mt-2"></i> +1 (555) 987-6543<br>
+          <i class="fas fa-envelope me-2 mt-2"></i> support@shopiko.com
+        </address>
+      </div>
+    </div>
+    
+    <hr class="my-4" style="background: linear-gradient(90deg, #ff8a00, #fc4a1a); border: none; height: 2px;">
+    
+    <!-- Social Media -->
+    <div class="d-flex justify-content-center mb-4">
+      <a href="#" class="mx-3 fs-4 gradient-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="mx-3 fs-4 gradient-link"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="mx-3 fs-4 gradient-link"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="mx-3 fs-4 gradient-link"><i class="fab fa-pinterest"></i></a>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p class="gradient-text-light mb-0">&copy; Copyright <%= new Date().getFullYear() %>. All Rights Reserved by Shopiko.</p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -35,3 +35,275 @@ body {
     color: #333;
     text-shadow: none;
   }
+
+
+
+  /* reviews css--------------------------------------------------------------- */
+
+
+
+  /* Review Page Styles */
+.product-detail-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.product-images {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-image {
+  width: 100%;
+  height: 400px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.thumbnail:hover, .thumbnail.active {
+  border-color: var(--primary-orange);
+}
+
+.product-info {
+  padding: 1rem 0;
+}
+
+.product-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--dark-bg);
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: var(--primary-orange);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.product-description {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-input {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.primary-btn {
+  background-color: var(--primary-orange);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.primary-btn:hover {
+  background-color: var(--secondary-orange);
+}
+
+.secondary-btn {
+  background-color: white;
+  color: var(--primary-orange);
+  border: 1px solid var(--primary-orange);
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.secondary-btn:hover {
+  background-color: #FFF3E0;
+}
+
+/* Reviews Section */
+.reviews-section {
+  margin-top: 3rem;
+  grid-column: 1 / -1;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark-bg);
+  border-bottom: 2px solid var(--accent-yellow);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.review-author {
+  font-weight: 600;
+  color: var(--dark-bg);
+}
+
+.review-rating {
+  color: var(--accent-yellow);
+  font-weight: 700;
+}
+
+.review-date {
+  color: #777;
+  font-size: 0.8rem;
+}
+
+.review-content {
+  line-height: 1.6;
+}
+
+
+
+
+
+/* its home page css--------------------- */
+/* Carousel Styles */
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.carousel-item {
+    height: 70vh;
+    min-height: 400px;
+    background: no-repeat center center;
+    background-size: cover;
+}
+
+.carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.carousel-caption h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.carousel-caption .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Testimonials Styles */
+.testimonials .card {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.testimonials .card:hover {
+    transform: translateY(-10px);
+}
+
+.testimonials .card-body {
+    padding: 2rem;
+}
+
+.testimonials .card-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.testimonials .card-text {
+    font-style: italic;
+    color: #555;
+}
+

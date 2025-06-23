@@ -14,3 +14,66 @@ main{
 .product-card .btnn{
     background-color: var(--main-color) ;
 }
+
+/* css of whole web page */
+/* theme.css */
+:root {
+    --primary-gradient: linear-gradient(to right, #6a11cb, #fc4a1a);
+    --primary-light: #f3e5ff;
+    --primary-dark: #2c0b5e;
+    --accent-orange: #fc4a1a;
+    --accent-purple: #6a11cb;
+    --text-dark: #2c0b5e;
+    --text-light: #ffffff;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(106, 17, 203, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-primary {
+    background: var(--accent-purple);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--accent-orange);
+}
+
+.btn-outline-primary {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+.btn-outline-primary:hover {
+    background: var(--accent-purple);
+    color: white;
+}
+
+/* Product cards specific styling */
+.product-card {
+    border-bottom: 3px solid transparent;
+    border-image: var(--primary-gradient);
+    border-image-slice: 1;
+}
+
+.like-btn .fa-solid {
+    color: var(--accent-orange);
+}
+
+.like-btn .fa-regular {
+    color: var(--accent-purple);
+}
