@@ -1,50 +1,92 @@
-# 🛍️ Shopiko - Full Stack E-Commerce Web App
 
-**Shopiko** is a modern, full-featured **e-commerce web application** built to deliver a seamless online shopping experience. From product browsing to secure checkout, it replicates all essential functionalities of a real-world e-commerce platform — including user authentication, cart management, reviews, order placement, and a **payment gateway integration**.
-(Under Processing)
+# 🛍️ **Shopiko** – Full Stack E-Commerce Web App
+
+**Shopiko** is a complete and modern **e-commerce platform** designed to provide a smooth online shopping experience — from browsing and cart management to secure checkout. This project mimics all essential real-world e-commerce features, making it ideal for learning full-stack development or showcasing your portfolio.
+
+🚧 **Note:** Deployment in progress .
+
+---
+
+## 📸 Screenshots
+
+**Home Page**
+![Home Page](https://github.com/user-attachments/assets/ad6f0a40-c957-44cf-a486-18de548f03b4)
+
+**Products Page**
+![Products Page](https://github.com/user-attachments/assets/c44215da-0ecc-4050-83b4-ef71d2912ebd)
+
+**Cart Page**
+![Cart Page](https://github.com/user-attachments/assets/789dc700-b421-41cb-baa0-f68bc10e5766)
+
 ---
 
 ## 🚀 Features
 
-- 🧾 **User Authentication** (Login/Register)
-- 🛒 **Cart Functionality** with Quantity Control
-- 💳 **Secure Payment Gateway Integration**
-- 🧑‍💼 **Admin Dashboard** (Optional: for managing products & orders)
-- 🌐 Fully **Responsive UI**
+* 🔐 **User Authentication** – Sign up & login securely
+* 🛒 **Cart Functionality** – Add/remove items, quantity update
+* 💳 **Payment Gateway Integration** – Stripe or Razorpay
+* 📦 **Order Placement** – Track & manage your orders
+* 🧑‍💼 **Admin Dashboard** – (Optional) Manage products & orders
+* 🧾 **Review System** – Add and view product reviews
+* 📱 **Responsive UI** – Mobile-friendly design
 
 ---
-
-
 
 ## 🛠️ Tech Stack
 
-### Frontend:
-- HTML, CSS, JavaScript
-- Bootstrap / Tailwind
-- EJS (for templating)
+### 🌐 Frontend
 
-### Backend:
-- Node.js
-- Express.js
-- MongoDB (Mongoose)
-- Passport.js (Authentication)
+* HTML, CSS, JavaScript
+* Bootstrap / Tailwind CSS
+* EJS (Embedded JavaScript Templates)
 
-### Additional Tools:
-- **Joi** for validation
-- **connect-flash** for notifications
-- **Stripe / Razorpay** for payment gateway
+### 🧠 Backend
+
+* Node.js
+* Express.js
+* MongoDB with Mongoose
+* Passport.js (Authentication)
+
+### 🧰 Other Tools
+
+* **Joi** – Request data validation
+* **connect-flash** – Flash messages for notifications
+* **Stripe / Razorpay** – Secure payment processing
 
 ---
 
-## 📦 Setup Instructions
+## ⚙️ Getting Started (Local Setup)
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/your-username/shopiko.git
 cd shopiko
 
-# Install dependencies
+# 2. Install dependencies
 npm install
 
-# Run the development server
+# 3. Add your environment variables
+# Create a .env file and include:
+# - DB_URL
+# - SECRET
+# - STRIPE_SECRET or RAZORPAY_KEY + RAZORPAY_SECRET
+
+# 4. Start the development server
 npm start
+```
+---
+
+## ✨ Future Enhancements
+
+* 📧 Email verification
+* 📦 Order history page for users
+* 📊 Analytics dashboard for admin
+* 🔍 Search and filter by category/price
+
+---
+
+## 📣 Credits
+
+Built with ❤️ using the MERN-style stack (MongoDB, Express.js, Node.js) and EJS for templating.
+
+---
