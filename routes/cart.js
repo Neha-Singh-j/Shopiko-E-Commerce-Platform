@@ -1,7 +1,7 @@
 const express = require("express");
 const { isLoggedIn } = require("../middleware");
 const User = require("../models/User");
-const Product = require("../models/product");
+const Product = require("../models/Product");
 const router = express.Router();
 
 router.get("/user/cart", isLoggedIn, async (req, res) => {
