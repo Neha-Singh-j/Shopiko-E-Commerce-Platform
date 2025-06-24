@@ -14,16 +14,22 @@ const productApi = require("./routes/api/productapi"); //api
 const passport = require("passport"); //pass
 const LocalStrategy = require("passport-local"); //pass
 const User = require("./models/User"); //pass
+require("dotenv").config(); // Make sure this is at the top
 
 mongoose.set("strictQuery", true);
+
 mongoose
-  .connect("mongodb://127.0.0.1:27017/julybatch")
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => {
-    console.log("DB connected");
+    console.log("✅ MongoDB connected successfully");
   })
   .catch((err) => {
-    console.log(err);
+    console.error("❌ MongoDB connection error:", err);
   });
+
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -37,7 +43,7 @@ app.use(methodOverride("_method"));
 // seedDB();
 
 let configSession = {
-  secret: "keyboard cat",
+  secret: process.env.SECRET || "keyboard cat",
   resave: false,
   saveUninitialized: true,
   cookie: {

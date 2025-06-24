@@ -77,3 +77,98 @@ body {
 .like-btn .fa-regular {
     color: var(--accent-purple);
 }
+
+
+
+ /* show page css */
+
+  
+  /* Gradient Background */
+  .bg-gradient-primary-orange {
+    background: linear-gradient(to right, #6a11cb 0%, #fc4a1a 100%);
+  }
+
+  /* Star Rating Styles */
+  .starability-basic {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.8rem;
+    gap: 5px;
+  }
+  
+  .starability-basic input {
+    display: none;
+  }
+  
+  .starability-basic label {
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .starability-basic input:checked ~ label,
+  .starability-basic input:hover ~ label {
+    color: #ffc107;
+  }
+  
+  .starability-basic label:hover,
+  .starability-basic label:hover ~ label {
+    color: #ffc107;
+  }
+  
+  .star-rating-display {
+    font-size: 1.3rem;
+  }
+
+  /* Card Styling */
+  .card {
+    transition: transform 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .container {
+      margin-top: 3rem !important;
+    }
+    .starability-basic {
+      font-size: 1.5rem;
+    }
+  }
+
+
+  /* footer css */
+   
+    /* Updated Gradient Text Styles to match navbar */
+    .gradient-text {
+      background: linear-gradient(90deg, #ff8a00, #ff5252);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    
+    .gradient-text-light {
+      background: linear-gradient(90deg, #ff9e80, #ffcc80);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .gradient-link {
+      background: linear-gradient(90deg, #ff9e80, #ff8a80);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .gradient-link:hover {
+      background: linear-gradient(90deg, #ff8a80, #ff9e80);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-decoration: underline;
+    }
+ 

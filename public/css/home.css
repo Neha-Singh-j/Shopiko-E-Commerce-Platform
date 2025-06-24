@@ -307,3 +307,66 @@ body {
     color: #555;
 }
 
+
+.testimonial-card {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .testimonial-img {
+            border: 3px solid #6a11cb;
+            object-fit: cover;
+        }
+        .testimonial-rating {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+        .carousel-caption {
+            background: rgba(106, 17, 203, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            bottom: 40px;
+        }
+        .carousel-caption h2 {
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            color: #ffd700;
+        }
+        .carousel-control-prev-icon, 
+        .carousel-control-next-icon {
+            background-color: #6a11cb;
+            border-radius: 50%;
+            padding: 15px;
+        }
+
+
+        
+    /* Add these styles to your existing style section */
+    #homeCarousel {
+        height: 80vh; /* Adjust this value as needed */
+        margin-bottom: 0; /* Remove any default margin */
+    }
+    
+    #homeCarousel .carousel-inner, 
+    #homeCarousel .carousel-item, 
+    #homeCarousel .carousel-item img {
+        height: 100%;
+        object-fit: cover; /* Ensures images cover the space without distortion */
+    }
+    
+    /* Optional: Adjust the caption position if needed */
+    .carousel-caption {
+        bottom: 20%; /* Adjust this to position the caption vertically */
+    }
+    
+    /* Ensure testimonials section starts right after carousel */
+    .testimonials {
+        padding-top: 0;
+    }
+   
+
+
+   

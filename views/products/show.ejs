@@ -1,89 +1,89 @@
-<%-include('../partials/header')%> 
+<%-include('../partials/header')%>
 <%-include('../partials/navbar')%>
 <%-include('../partials/flash')%>
 
-<div class="container-fluid mt-5 pt-3 px-4">
-  <div class="row justify-content-center g-4">
+<div class="container mt-5 pt-4">
+  <div class="row g-4">
     <!-- Product Card Column -->
-    <div class="col-lg-6 col-xl-5">
-      <div class="card shadow-lg border-0 mt-3 mx-auto" style="max-width: 28rem; border-radius: 15px; border-top: 5px solid #7b2cbf;">
-        <img
-          class="img-fluid rounded-top"
-          src="<%=foundProduct.img%>"
-          alt="<%= foundProduct.name %>"
-          style="height: 300px; object-fit: cover;"
-        />
+    <div class="col-lg-6 col-md-12">
+      <div class="card shadow-lg border-0" style="border-radius: 15px; border-top: 5px solid #6a11cb;">
+        <div class="text-center p-3">
+          <img src="<%=foundProduct.img%>" class="img-fluid rounded-3" style="max-height: 350px; object-fit: contain;" alt="<%= foundProduct.name %>">
+        </div>
         <div class="card-body">
-          <h3 class="card-title text-center text-violet"><strong><%= foundProduct.name %></strong></h3>
-          <hr class="border-orange">
-          <h4 class="card-title text-orange mb-3">Rs: <%= foundProduct.price %></h4>
-          <p class="card-text text-muted"><%= foundProduct.desc %></p>
+          <h3 class="card-title text-center fw-bold text-primary"><%= foundProduct.name %></h3>
+          <h5 class="text-success fw-bold my-3">Rs: <%= foundProduct.price %></h5>
+          <p class="card-text mb-4 text-muted"><%= foundProduct.desc %></p>
           
-          <div class="d-flex flex-wrap gap-2 mt-4">
-            <a href="#" class="btn btn-success flex-grow-1">Buy Now</a>
-            <form
-              class="d-inline-block flex-grow-1"
-              action="/user/<%=foundProduct._id%>/add"
-              method="POST"
-            >
-              <button class="btn btn-violet w-100">Add to Cart</button>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#" class="btn btn-success px-4 py-2 fw-bold">Buy Now</a>
+            <form action="/user/<%=foundProduct._id%>/add" method="POST">
+              <button class="btn btn-primary px-4 py-2 fw-bold">Add to Cart</button>
             </form>
+            <% if(currentUser && currentUser.role === "seller") { %>
+              <a href="/products/<%=foundProduct._id%>/edit" class="btn btn-warning px-4 py-2 fw-bold">Edit</a>
+              <form action="/products/<%=foundProduct._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-danger px-4 py-2 fw-bold">Delete</button>
+              </form>
+            <% } %>
           </div>
-          
-          <% if(currentUser && currentUser.role === "seller"){ %>
-          <div class="d-flex flex-wrap gap-2 mt-2">
-            <a href="/products/<%=foundProduct._id%>/edit" class="btn btn-outline-violet flex-grow-1"
-              >Edit</a
-            >
-            <form
-              class="d-inline-block flex-grow-1"
-              action="/products/<%=foundProduct._id%>?_method=DELETE"
-              method="POST"
-            >
-              <button class="btn btn-outline-danger w-100">Delete</button>
-            </form>
-          </div>
-          <% } %>
         </div>
       </div>
     </div>
 
-    <!-- Reviews Column -->
-    <div class="col-lg-6 col-xl-5">
-      <div class="card shadow-sm border-0 p-4" style="border-radius: 15px; border-top: 5px solid #f77f00;">
-        <h2 class="display-6 text-violet mb-4">Customer Reviews</h2>
-        
-        <% if(foundProduct.reviews.length === 0) { %>
-          <div class="alert alert-light border-violet">
-            No reviews yet. Be the first to review!
-          </div>
-        <% } %>
-        
-        <% for(let review of foundProduct.reviews){ %>
-          <div class="card mb-3 border-0 shadow-sm" style="border-left: 4px solid #7b2cbf;">
-            <div class="card-body position-relative">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <div class="starability-result-container">
-                  <p class="starability-result mb-0" data-rating="<%=review.rating%>">
-                    Rated: <%=review.rating%> stars
-                  </p>
+    <!-- Review Column -->
+    <div class="col-lg-6 col-md-12">
+      <!-- Reviews List Card -->
+      <div class="card shadow-lg border-0 mb-4" style="border-radius: 15px; border-top: 5px solid #fc4a1a;">
+        <div class="card-header bg-gradient-primary-orange text-white py-3" style="border-radius: 15px 15px 0 0;">
+          <h4 class="mb-0 fw-bold"><i class="fas fa-comments me-2"></i>Customer Reviews</h4>
+        </div>
+        <div class="card-body p-4">
+          <% if(foundProduct.reviews.length > 0) { %>
+            <% foundProduct.reviews.forEach(review => { %>
+              <div class="card mb-4 border-0 shadow-sm" style="border-radius: 12px; border-left: 4px solid #6a11cb;">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="star-rating-display">
+                      <% for(let i=1; i<=5; i++) { %>
+                        <i class="fas fa-star <%= i <= review.rating ? 'text-warning' : 'text-muted' %>"></i>
+                      <% } %>
+                      <span class="ms-2 fw-bold"><%=review.rating%>.0</span>
+                    </div>
+                    <% if(currentUser && (currentUser._id.equals(review.author) || currentUser.role === 'admin')) { %>
+                      <form action="/products/<%=foundProduct._id%>/review/<%=review._id%>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                      </form>
+                    <% } %>
+                  </div>
+                  <p class="mb-3"><%=review.comment%></p>
+                  <% if(review.createdAt) { %>
+                    <small class="text-muted">
+                      <i class="far fa-clock me-1"></i>
+                      <%=review.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })%>
+                    </small>
+                  <% } %>
                 </div>
-                <button class="btn btn-sm btn-outline-danger">Delete</button>
               </div>
-              <p class="card-text"><%=review.comment%></p>
-              <%if(review.createdAt){%>
-              <small class="text-muted"><i class="far fa-clock me-1"></i><%=review.createdAt.toDateString()%></small>
-              <%}%>
+            <% }) %>
+          <% } else { %>
+            <div class="text-center py-4">
+              <i class="fas fa-comment-slash text-muted fa-3x mb-3"></i>
+              <p class="text-muted fw-bold">No reviews yet. Be the first to review!</p>
             </div>
-          </div>
-        <% } %>
+          <% } %>
+        </div>
+      </div>
 
-        <!-- Review Form -->
-        <div class="mt-5 pt-3">
-          <h3 class="text-violet mb-3">Leave your review</h3>
+      <!-- Review Form Card -->
+      <div class="card shadow-lg border-0" style="border-radius: 15px; border-top: 5px solid #6a11cb;">
+        <div class="card-header bg-gradient-primary-orange text-white py-3" style="border-radius: 15px 15px 0 0;">
+          <h4 class="mb-0 fw-bold"><i class="fas fa-pen-alt me-2"></i>Leave Your Review</h4>
+        </div>
+        <div class="card-body p-4">
           <form action="/products/<%= foundProduct._id %>/review" method="POST">
             <div class="mb-4">
-              <h5 class="text-orange mb-3">Your Rating:</h5>
+              <label class="form-label fw-bold mb-3">Rating</label>
               <fieldset class="starability-basic">
                 <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
                 <input type="radio" id="first-rate1" name="rating" value="1" />
@@ -99,17 +99,12 @@
               </fieldset>
             </div>
             <div class="mb-4">
-              <label class="form-label text-violet" for="comment">Your Comment:</label>
-              <textarea
-                class="form-control border-violet"
-                name="comment"
-                id="comment"
-                rows="3"
-                placeholder="Share your thoughts about this product..."
-                style="border-radius: 10px;"
-              ></textarea>
+              <label for="comment" class="form-label fw-bold">Your Review</label>
+              <textarea class="form-control p-3" name="comment" id="comment" rows="4" required style="border-radius: 10px;"></textarea>
             </div>
-            <button class="btn bg-orange text-white px-4 py-2" style="border-radius: 8px;">Submit Review</button>
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
+              <i class="fas fa-paper-plane me-2"></i>Submit Review
+            </button>
           </form>
         </div>
       </div>
@@ -117,58 +112,6 @@
   </div>
 </div>
 
-<style>
-  :root {
-    --violet: #7b2cbf;
-    --light-violet: #9d4edd;
-    --orange: #f77f00;
-    --light-orange: #fcbf49;
-  }
-  .text-violet { color: var(--violet); }
-  .bg-violet { background-color: var(--violet); }
-  .border-violet { border-color: var(--violet); }
-  .btn-violet { 
-    background-color: var(--violet); 
-    color: white;
-  }
-  .btn-violet:hover {
-    background-color: var(--light-violet);
-    color: white;
-  }
-  
-  .text-orange { color: var(--orange); }
-  .bg-orange { background-color: var(--orange); }
-  .border-orange { border-color: var(--orange); }
-  
-  .starability-result {
-    font-size: 1rem;
-    color: var(--orange);
-    position: relative;
-    z-index: 2;
-  }
-  
-  .starability-result-container {
-    position: relative;
-    z-index: 1;
-    padding-right: 10px;
-    background: white;
-    display: inline-block;
-  }
-  
-  body {
-    padding-top: 80px;
-  }
-  
-  .card {
-    transition: transform 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .starability-basic {
-    margin-bottom: 1rem;
-  }
-</style>
+
 
 <%-include('../partials/footer')%>
