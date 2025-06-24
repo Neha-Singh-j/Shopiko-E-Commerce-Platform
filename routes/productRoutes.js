@@ -2,7 +2,7 @@ const express =  require('express');
 // const Joi = require('joi');
 const Product = require('../models/Product');
 const router = express.Router();
-const {validateProduct , isLoggedIn, isSeller, isProductAuthor} =  require('../middleware');
+const {validateProduct , isLoggedIn, isSeller, isProductAuthor} =  require('../middlewares');
 const Review = require('../models/Review');
 
 // displaying all the products
