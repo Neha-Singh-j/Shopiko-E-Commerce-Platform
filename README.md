@@ -5,7 +5,6 @@
 
 
 ## Live Demo : Click Here 👉 https://shopiko-1.onrender.com
-https://shopiko-1.onrender.com
 
 
 ---
@@ -28,7 +27,6 @@ https://shopiko-1.onrender.com
 
 * 🔐 **User Authentication** – Sign up & login securely
 * 🛒 **Cart Functionality** – Add/remove items, quantity update
-* 💳 **Payment Gateway Integration** – Stripe or Razorpay
 * 📦 **Order Placement** – Track & manage your orders
 * 🧑‍💼 **Admin Dashboard** – (Optional) Manage products & orders
 * 🧾 **Review System** – Add and view product reviews
@@ -40,10 +38,9 @@ https://shopiko-1.onrender.com
 
 ### 🌐 Frontend
 
-* HTML, CSS, JavaScript
+* React
 * Bootstrap / Tailwind CSS
-* EJS (Embedded JavaScript Templates)
-
+  
 ### 🧠 Backend
 
 * Node.js
