@@ -7,9 +7,10 @@
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "dev": "nodemon ./app.js",
+  "start": "node ./app.js"
+}
+,
   "dependencies": {
     "connect-flash": "^0.1.1",
     "dotenv": "^16.5.0",
