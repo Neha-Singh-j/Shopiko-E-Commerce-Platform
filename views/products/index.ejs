@@ -6,6 +6,22 @@
     <h1 class="text-center mb-5 gradient-text" style="background: linear-gradient(to right, #6a11cb, #fc4a1a); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700;">
         Featured Products
     </h1>
+<!-- searching products -->
+   <div class="container my-4">
+   <form action="/products" method="GET" class="d-flex mb-3">
+  <input
+    type="search"
+    name="search"
+    class="form-control me-2"
+    placeholder="Search products..."
+    value="<%= searchQuery %>"
+    aria-label="Search"
+  >
+  <button class="btn btn-primary" type="submit">Search</button>
+</form>
+
+</div>
+
 
     <div class="row g-4">
         <% for(let item of products){ %>
@@ -13,6 +29,8 @@
                 <div class="card product-card h-100 border-0 shadow-sm" style="border-radius: 12px; overflow: hidden; transition: transform 0.3s ease;">
                     <div class="position-relative">
                         <img src="<%=item.img%>" class="card-img-top" alt="<%=item.name%>" style="height: 220px; object-fit: cover;">
+
+                        <!-- Wishlist button -->
                         <button class="btn like-btn position-absolute top-0 end-0 m-2" product-id="<%=item._id%>" style="background: rgba(255,255,255,0.8); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
                             <% if(currentUser && currentUser.wishlist.includes(item._id)){ %>
                                 <i class="fa-solid fa-heart" style="color: #fc4a1a; font-size: 1.2rem;"></i>
@@ -20,26 +38,47 @@
                                 <i class="fa-regular fa-heart" style="color: #6a11cb; font-size: 1.2rem;"></i>
                             <% } %>
                         </button>
+
+                        <!-- Avg Rating + Review Count Badge -->
+                        <span class="badge rounded-pill bg-light text-dark position-absolute" style="top:10px; left:10px; font-size: 0.9rem;">
+                            <%= item.avgRating %> ★ | <%= item.reviews.length %>
+                        </span>
                     </div>
+
                     <div class="card-body d-flex flex-column">
                         <div class="mb-3">
                             <h3 class="card-title fw-bold" style="color: #2c0b5e;"><%= item.name %></h3>
                             <p class="card-text text-muted"><%= item.desc.substring(0, 60) %>...</p>
                         </div>
+
                         <div class="mt-auto">
+                            <!-- Price with discount -->
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="mb-0 fw-bold" style="color: #fc4a1a;">Rs. <%= item.price %></h5>
+                                <h6 class="mb-0 fw-bold" style="color: #fc4a1a;">
+                                    <span class="fw-light fs-6 text-decoration-line-through" style="color: gray;">Rs. <%= item.price * 2 %></span>
+                                    Rs. <%= item.price %>
+                                    <span class="fw-light fs-6 text-warning">(50% OFF)</span>
+                                </h6>
                                 <span class="badge rounded-pill px-3 py-2" style="background-color: #f3e5ff; color: #6a11cb;">
                                     <%= item.instock %> in stock
                                 </span>
                             </div>
+
+                            <!-- Reviews section -->
+                            <% if(item.reviews.length){ %>
+                                <p class="text-muted"><%= item.reviews.length %> reviews</p>
+                            <% } else { %>
+                                <p class="text-muted">No reviews</p>
+                            <% } %>
+
+                            <!-- View Product Button -->
                             <a href="/products/<%=item._id%>" class="btn w-100 py-2 fw-bold" style="background: linear-gradient(to right, #6a11cb, #fc4a1a); color: white; border: none;">
                                 View Product
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         <% } %>
     </div>
 </div>

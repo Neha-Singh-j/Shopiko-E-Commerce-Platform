@@ -85,8 +85,8 @@ npm start
 
 ---
 
-## 📣 Credits
+##  Credits
 
-Built with ❤️ using the MERN-style stack (MongoDB, Express.js, Node.js) and EJS for templating.
+Built with  using the MERN-style stack (MongoDB, Express.js, Node.js) and EJS for templating.
 
 ---

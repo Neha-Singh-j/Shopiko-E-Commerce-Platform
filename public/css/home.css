@@ -234,7 +234,6 @@ body {
 
 
 
-
 /* its home page css--------------------- */
 /* Carousel Styles */
 .carousel {
@@ -366,7 +365,63 @@ body {
     .testimonials {
         padding-top: 0;
     }
-   
-
-
-   
+    
+    .categories-section {
+        padding: 60px 0;
+    }
+    
+    .category-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px 15px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .category-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .category-card:hover .category-icon {
+        transform: scale(1.1);
+    }
+    
+    .category-icon i {
+        font-size: 2rem;
+    }
+    
+    .category-title {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 0;
+        transition: color 0.3s ease;
+    }
+    
+    .category-card:hover .category-title {
+        color: #6a11cb;
+    }
+    
+    @media (max-width: 768px) {
+        .category-icon {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .category-icon i {
+            font-size: 1.5rem;
+        }
+    }

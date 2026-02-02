@@ -24,7 +24,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Thumbnail image switching
   const thumbnails = document.querySelectorAll('.thumbnail');
-  const mainImage = document.querySelector('.main-image img');
+  // const mainImage = document.querySelector('.main-image img');
   
   if (thumbnails.length && mainImage) {
     thumbnails.forEach(thumb => {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add active class to clicked thumbnail
         this.classList.add('active');
         // Update main image
-        mainImage.src = this.querySelector('img').src;
+        // mainImage.src = this.querySelector('img').src;
       });
     });
   }
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
       quantityInput.value = value + 1;
     });
   }
-  
+ 
   // Add to cart button
   const addToCartBtn = document.querySelector('.add-to-cart');
   if (addToCartBtn) {

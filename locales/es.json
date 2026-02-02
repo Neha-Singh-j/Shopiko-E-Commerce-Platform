@@ -1,0 +1,5 @@
+{
+  "navbar": { "home": "Inicio", "products": "Productos", "wishlist": "Lista de deseos" },
+  "search": { "placeholder": "Buscar productos...", "button": "Buscar" },
+  "footer": { "rights": "Todos los derechos reservados" }
+}

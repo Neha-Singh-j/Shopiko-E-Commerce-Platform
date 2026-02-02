@@ -1,6 +1,6 @@
-<%-include('../partials/header')%>
-<%-include('../partials/navbar')%>
-<%-include('../partials/flash')%>
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
 
 <div class="container mt-5 pt-4">
   <div class="row g-4">
@@ -8,21 +8,25 @@
     <div class="col-lg-6 col-md-12">
       <div class="card shadow-lg border-0" style="border-radius: 15px; border-top: 5px solid #6a11cb;">
         <div class="text-center p-3">
-          <img src="<%=foundProduct.img%>" class="img-fluid rounded-3" style="max-height: 350px; object-fit: contain;" alt="<%= foundProduct.name %>">
+          <img src="<%= foundProduct.img %>" class="img-fluid rounded-3" style="max-height: 350px; object-fit: contain;" alt="<%= foundProduct.name %>">
         </div>
         <div class="card-body">
           <h3 class="card-title text-center fw-bold text-primary"><%= foundProduct.name %></h3>
           <h5 class="text-success fw-bold my-3">Rs: <%= foundProduct.price %></h5>
           <p class="card-text mb-4 text-muted"><%= foundProduct.desc %></p>
-          
+
           <div class="d-flex flex-wrap gap-3">
-            <a href="#" class="btn btn-success px-4 py-2 fw-bold">Buy Now</a>
-            <form action="/user/<%=foundProduct._id%>/add" method="POST">
+            <form action="/user/<%= foundProduct._id %>/add" method="POST">
+              <button class="btn btn-success px-4 py-2 fw-bold">Buy Now</button>
+            </form>
+
+            <form action="/user/<%= foundProduct._id %>/add" method="POST">
               <button class="btn btn-primary px-4 py-2 fw-bold">Add to Cart</button>
             </form>
+
             <% if(currentUser && currentUser.role === "seller") { %>
-              <a href="/products/<%=foundProduct._id%>/edit" class="btn btn-warning px-4 py-2 fw-bold">Edit</a>
-              <form action="/products/<%=foundProduct._id%>?_method=DELETE" method="POST">
+              <a href="/products/<%= foundProduct._id %>/edit" class="btn btn-warning px-4 py-2 fw-bold">Edit</a>
+              <form action="/products/<%= foundProduct._id %>?_method=DELETE" method="POST">
                 <button class="btn btn-danger px-4 py-2 fw-bold">Delete</button>
               </form>
             <% } %>
@@ -48,19 +52,19 @@
                       <% for(let i=1; i<=5; i++) { %>
                         <i class="fas fa-star <%= i <= review.rating ? 'text-warning' : 'text-muted' %>"></i>
                       <% } %>
-                      <span class="ms-2 fw-bold"><%=review.rating%>.0</span>
+                      <span class="ms-2 fw-bold"><%= review.rating %>.0</span>
                     </div>
                     <% if(currentUser && (currentUser._id.equals(review.author) || currentUser.role === 'admin')) { %>
-                      <form action="/products/<%=foundProduct._id%>/review/<%=review._id%>?_method=DELETE" method="POST">
+                      <form action="/products/<%= foundProduct._id %>/review/<%= review._id %>?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                       </form>
                     <% } %>
                   </div>
-                  <p class="mb-3"><%=review.comment%></p>
+                  <p class="mb-3"><%= review.comment %></p>
                   <% if(review.createdAt) { %>
                     <small class="text-muted">
                       <i class="far fa-clock me-1"></i>
-                      <%=review.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })%>
+                      <%= review.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
                     </small>
                   <% } %>
                 </div>
@@ -112,6 +116,4 @@
   </div>
 </div>
 
-
-
-<%-include('../partials/footer')%>
+<%- include('../partials/footer') %>

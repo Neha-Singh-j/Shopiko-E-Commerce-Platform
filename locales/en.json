@@ -1,0 +1,5 @@
+{
+  "navbar": { "home": "Home", "products": "Products", "wishlist": "Wishlist" },
+  "search": { "placeholder": "Search products...", "button": "Search" },
+  "footer": { "rights": "All rights reserved" }
+}

@@ -1,13 +1,51 @@
-<%if(success && success.length){%>
+<% if(success && success.length){ %>
     <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 100px;">
-        <strong><%=success%></strong>
+        <strong><%= success %></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-<%}%>
+    </div>
+<% } %>
 
-<%if(error && error.length){%>
+<% if(error && error.length){ %>
     <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-top: 100px;">
-        <strong><%=error%></strong>
+        <strong><%= error %></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-<%}%>
+    </div>
+<% } %>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const alerts = document.querySelectorAll('.alert');
+
+        alerts.forEach(alert => {
+            // Auto-dismiss after 5 seconds
+            const timeoutId = setTimeout(() => {
+                fadeOutAlert(alert);
+            }, 5000);
+
+            // If user clicks the close button, clear timeout and remove immediately
+            const closeButton = alert.querySelector('.btn-close');
+            if (closeButton) {
+                closeButton.addEventListener('click', () => {
+                    clearTimeout(timeoutId); // stop auto-dismiss
+                    fadeOutAlert(alert);
+                });
+            }
+        });
+
+        // Function to fade out and remove alert
+        function fadeOutAlert(alert) {
+            alert.classList.remove('show');
+            alert.classList.add('hide');
+            setTimeout(() => {
+                alert.remove();
+            }, 500); // matches CSS transition
+        }
+    });
+</script>
+
+<style>
+    .alert.hide {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+</style>
